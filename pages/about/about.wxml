@@ -1,0 +1,9 @@
+<!--pages/about/about.wxml-->
+<view class='index'>
+<view class='head' bindtap=''>
+<view class='title'>关于我们</view>
+<view class='desc'>小戳</view>
+</view>
+<view class='body'>详细信息</view>
+</view>
+

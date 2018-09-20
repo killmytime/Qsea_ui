@@ -1,0 +1,18 @@
+<!--pages/comment/comment.wxml-->
+<view class='index'>
+<view class='body'>
+<view class='content'>
+<view class='block'>
+<image src='../resources/images/icon_me_normant-01.png'></image>
+<text class='username'>泛若不系之舟\n</text>
+<text class='comment_content'>现在啥都没有\n</text>
+<image src='../resources/images/icon_reply-01.png'></image>
+<image src='../resources/images/icon_good-01.png'></image>
+</view>
+</view>
+<view class='inputBox'>
+<input></input>
+<button type='default'>评论</button>
+</view>
+</view>
+</view>

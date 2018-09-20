@@ -1,0 +1,38 @@
+<!--pages/exercises/exercises.wxml-->
+<view class="touch"  bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd" >
+<view class='index'>
+<view class='body'>
+<view class='question'>
+<form bindsubmit="formSubmit" bindreset="formReset">
+ <view class="section section_gap">
+    <view class="section__title">{{page}}{{currentTiKu.Question}}</view>
+    <radio-group  name="radio-group">
+      <label class='radio'><radio value="radio1"/>{{currentTiKu.A}}</label>
+      <label class='radio'><radio value="radio1"/>{{currentTiKu.B}}</label>
+      <label class='radio'><radio value="radio1"/>{{currentTiKu.C}}</label>
+      <label class='radio'><radio value="radio1"/>{{currentTiKu.D}}</label>
+      <label class='radio'><radio value="radio1"/>{{currentTiKu.E}}</label>
+      <label class='radio'><radio value="radio1"/>{{currentTiKu.F}}</label>
+    </radio-group>
+  </view>
+</form>
+</view>
+<view class='adding'>
+<text class='name'>【答案】    {{currentTiKu.Answer}}\n</text>
+<text class='name'>【解析】    </text>
+<text class='detail'>{{currentTiKu.Explanation}}\n</text>
+<text class='name'>【难度】    1.3\n</text>
+<text class='name'>【正确率】  100%/</text>
+<text class='detail'>98.8%</text>
+<view class='functions'>
+<navigator url='../correct/correct'><image src='../resources/images/icon_correct.png'></image></navigator>
+<navigator url='../comment/comment'><image src='../resources/images/icon_comment.png'></image></navigator>
+<navigator bindtap='bindadding'><image src='../resources/images/icon_add.png'></image></navigator>
+<navigator bindtap='bindaddList'><image src='../resources/images/icon_list.png'></image></navigator>
+</view>
+</view>
+</view>
+</view>
+
+</view>
+

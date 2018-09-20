@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/user/user",
+    "pages/discover/discover",
+    "pages/about/about",
+    "pages/feedback/feedback",
+    "pages/question/question",
+    "pages/event/event",
+    "pages/correct/correct",
+    "pages/exercises/exercises",
+    "pages/comment/comment",
+    "pages/fini/fini",
+    "pages/directory/directory"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "佬答题",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#11cd6e",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "pages/resources/images/icon_shuati_selected-01.png",
+        "iconPath": "pages/resources/images/icon_shuati_normat-01.png",
+        "pagePath": "pages/index/index",
+        "text": "刷题"
+      },
+      {
+        "selectedIconPath": "pages/resources/images/icon_findmore_selected-01.png",
+        "iconPath": "pages/resources/images/icon_findmore_normat-01.png",
+        "pagePath": "pages/discover/discover",
+        "text": "发现"
+      },
+      {
+        "selectedIconPath": "pages/resources/images/icon_me_selected-01.png",
+        "iconPath": "pages/resources/images/icon_me_normat-01.png",
+        "pagePath": "pages/user/user",
+        "text": "我的"
+      }
+    ]
+  }
+}

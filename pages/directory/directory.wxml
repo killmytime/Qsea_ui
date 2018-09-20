@@ -1,0 +1,18 @@
+<!--pages/directory/directory.wxml-->
+<view class="index">
+    <view class="head">
+        <view class="title">学习目标</view>
+        <view class="desc">请选定你的学习目标</view>
+    </view>
+    <view class='body'>
+    <block wx:for="{{navData0}}" wx:for-index="idx" wx:for-item="navItem" wx:key="idx">
+        <text>{{navItem.title}}********\n</text>
+        <block wx:for="{{navData1}}" wx:for-index="index" wx:for-item="navItem1" wx:key="index" wx:if="{{navItem.id==navItem1.pid}}">
+        <text>{{navItem1.title}}---------\n</text>
+        <block wx:for="{{navData2}}" wx:for-index="index" wx:for-item="navItem2" wx:key="index" wx:if="{{navItem1.id==navItem2.pid}}">
+        <text>{{navItem2.title}}\n</text>
+          </block>
+          </block>
+          </block>
+    </view>
+     </view>

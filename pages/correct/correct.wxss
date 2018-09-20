@@ -1,0 +1,4 @@
+/* pages/correct/correct.wxss */
+.board{
+  background-color: gainsboro;
+}

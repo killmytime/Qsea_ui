@@ -1,0 +1,51 @@
+<!--pages/discover/discover.wxml-->
+<!--导航条-->
+<view class="navbar">
+  <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>
+</view>
+<view class='index'>
+<view class='body'>
+<!--排行榜-->
+<view hidden="{{currentTab!==0}}">
+  <view>排行榜  本周刷题数/总刷题数</view>
+  <view class='list'>
+  <view>
+  <text class=''>No.1</text>
+  <image src='../resources/images/icon_me_selected-01.png' class='userinfo-avatar' mode='cover'></image>
+  <text class=''>hello 1200/2000</text>
+  </view>
+  <view>No.2 world  1200/2000</view>
+  </view>
+</view>
+ 
+<!--活动信息-->
+<view hidden="{{currentTab!==1}}">
+  <navigator class='events_body' url='../event/event'>
+  <image src='../resources/images/bg_home-01.png' class='event_image' mode='cover'></image>
+  <text class=''>活动简介   点击进入>></text>
+  </navigator>
+</view>
+ 
+<!--会员中心-->
+<view hidden="{{currentTab!==2}}">
+<view class="head">
+       <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 一键登录 </button>
+    <block wx:else>
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+    </view>
+  <view class='content'>
+  <navigator>会员福利</navigator>
+  <navigator>会员价格</navigator>
+  <button type='primary' bindtap='primary'>续费</button>
+  </view>
+</view>
+
+<!--我要出题-->
+<view hidden="{{currentTab!==3}}">
+  功能暂未推出
+</view>
+</view>
+</view>
+

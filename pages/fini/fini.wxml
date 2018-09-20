@@ -1,0 +1,17 @@
+<!--pages/fini/fini.wxml-->
+<view class='index'>
+<view class='body'>
+<view class='title'>生物化学与分子生物学</view>
+<view class='time'>2018-08-25 18:34</view>
+<view class='details'>
+<view class='tishu'>题数：20\n</view>
+<view class='rate'>正确率：95\n</view>
+</view>
+<view class='function_body'>
+<button type='primaray'>保存</button>
+<button>删除</button>
+<button>首页</button>
+<button>再来一套</button>
+</view>
+</view>
+</view>

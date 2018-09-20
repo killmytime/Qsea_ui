@@ -1,0 +1,11 @@
+<!--pages/correct/correct.wxml-->
+<view class='index'>
+<view class='body'>
+  <form bindsubmit="bindFormSubmit">
+  <view class='board'>
+    <textarea placeholder='请输入纠错内容..' placeholder-style='color:skyblue' auto-focus='true' maxlength='-1' name="feedback"/>
+    </view>
+    <button type='primary' form-type="submit"> 提交 </button>
+  </form>
+</view>
+</view>

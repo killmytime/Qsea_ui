@@ -1,0 +1,15 @@
+/* pages/exercises/exercises.wxss */
+.radio{
+  display: block;
+  margin-bottom: 10px;
+}
+.name{
+  color: skyblue;
+  font-size: 16pt;
+}
+.functions{
+  width: 40%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row; 
+}
