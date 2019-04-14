@@ -1,5 +1,7 @@
 // pages/directory/directory.js
-var type=[];
+//获取应用实例
+const app = getApp()
+
 Page({
 
   /**
@@ -7,18 +9,25 @@ Page({
    */
   data: {
     navData0: [],
-    navData1: [],
-    navData2: [],
-    navData3: []
+    navData1: []
   },
-
-  widgetsToggle:function(e){
-    var id = e.currentTarget.id, data = {};
-    for (var i = 0, len = type.length; i < len; ++i) {
-      data["view"+type[i]] = false;
-    }
-    data[id + 'Show'] = !this.data[id + 'Show'];
-    this.setData(data);
+  addSubjectTap: function(e){
+    var kind=e.target.id;
+    wx.request({
+      url: app.url+'target',
+      header:{
+        'content-type': 'application/json', // 默认值
+        'userId': app.globalData.userId
+      },
+      data:{
+        'targetId': kind
+      },
+      success:function(response){
+        wx.showToast({
+          title: '成功修改学习目标'
+        })
+      }
+    })
   },
 
   /**
@@ -41,16 +50,17 @@ Page({
   onShow: function () {
     var that = this;
     wx.request({
-      url: 'http://localhost:8080/title', //仅为示例，并非真实的接口地址
+      url: app.url+'title', //仅为示例，并非真实的接口地址
       header: {
         'content-type': 'application/json' // 默认值
+      },
+      data: {
       },
       success: function (res) {
         var temp0=[];
         var directory00=res.data.directory0;
         for(var i in directory00){
           temp0.push(directory00[i]);
-          type.push(directory00[i].id);
         }
         console.log(temp0);
         that.setData({
@@ -64,24 +74,6 @@ Page({
         console.log(temp1);
         that.setData({
           navData1: temp1
-        })
-        var temp2 = [];
-        var directory02 = res.data.directory2;
-        for (var i in directory02) {
-          temp2.push(directory02[i]);
-        }
-        console.log(temp2);
-        that.setData({
-          navData2: temp2
-        })
-        var temp3 = [];
-        var directory03 = res.data.directory3;
-        for (var i in directory03) {
-          temp3.push(directory03[i]);
-        }
-        console.log(temp3);
-        that.setData({
-          navData3: temp3
         })
       },
       fail:function(){

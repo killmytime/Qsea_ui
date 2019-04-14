@@ -3,7 +3,7 @@
 <view class='container'>
     <scroll-view scroll-x="true" class="nav" scroll-left="{{navScrollLeft}}" scroll-with-animation="{{true}}">
         <block wx:for="{{navData}}" wx:for-index="idx" wx:for-item="navItem" wx:key="idx">
-            <view class="nav-item {{currentTab == idx ?'active':''}}"  data-current="{{idx}}" bindtap="switchNav">{{navItem}}</view>
+            <view class="nav-item {{currentTab == idx ?'active':''}}"  data-current="{{idx}}" bindtap="switchNav">{{navItem.title}}</view>
         </block>        
     </scroll-view>
     <!-- 页面内容 -->
@@ -17,10 +17,10 @@
 </view>
 <block wx:for="{{navData}}" wx:for-index="idx"  wx:for-item="navItem" wx:key="idx" wx:if="{{idx!=0}}">
 <view class='div_line'></view>
-<view class='block-normal' bindtap=''>
-<text class='title'>{{idx}}{{navItem}}</text>
+<view class='block-normal' id="{{idx}}" bindtap='blockTap'>
+<text class='title'>{{idx}}{{navItem.title}}</text>
 <view class='tr'>
-<navigator class='td' url='../exercises/exercises'>基础题库\n11/70</navigator>
+<navigator class='td' url=''>基础题库\n11/70</navigator>
 <navigator class='td' url=''>进阶题库\n11/70</navigator>
 </view>
 </view>
@@ -30,7 +30,7 @@
 <view wx:for="{{navData1}}" wx:for-item="navItem1" wx:for-index="index" wx:key="index" wx:if="{{navItem1.pid==idx}}">
 <text>{{navItem1.title}}------\n</text>
 <view wx:for="{{navData2}}" wx:for-item="navItem2" wx:for-index="index2" wx:key="index2" wx:if="{{navItem1.id==navItem2.pid}}">
-<text id="{{idx}}@{{index+1}}@{{index2+1}}" catchtap='questionTap'>{{navItem2.title}}</text>
+<text id="{{navData[idx].id}}_{{navItem1.id}}_{{navItem2.id}}_" data-title='{{navItem2.title}}' catchtap='questionTap'>{{navItem2.title}}</text>
 </view>
 </view>
 </view>

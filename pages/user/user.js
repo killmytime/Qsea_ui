@@ -18,6 +18,20 @@ Page({
       url: '../logs/logs'
     })
   },
+  navToErrors:function(e){
+    app.globalData.currentTiKuTitle="我的错题本";
+    app.globalData.tiKuKind="errors";
+   wx.navigateTo({
+     url: '../exercises/exercises',
+   }) 
+  },
+  navToPoints:function(e){
+    app.globalData.currentTiKuTitle="我的错点";
+    app.globalData.tiKuKind="points";
+    wx.navigateTo({
+      url: '../exercises/exercises',
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -26,15 +40,21 @@ Page({
     // 登录
     wx.login({
       success: function (res) {
-        if (res.code) {   
+        if (res.code) {
           wx.request({
-            url: 'http://localhost:8080/login',
+            url: app.url+'login',
             header: {
               'content-type': 'application/json', // 默认值
-              'js_code':res.code,
+            },
+            data: {
+              'js_code': res.code,
+              'userinfo': app.globalData.userInfo
             },
             success: function (response) {
               console.log("success");
+              console.log(response.data);
+              app.globalData.userId = response.data.openid;
+              console.log(app.globalData.userId);
             },
           })
         } else {
@@ -42,6 +62,7 @@ Page({
         }
       }
     });
+   
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -69,7 +90,6 @@ Page({
         }
       })
     }
-    console.log(app.globalData.userInfo);
   },
 
   /**

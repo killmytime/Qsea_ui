@@ -35,6 +35,15 @@ App({
   },
   globalData: {
     userInfo: null,
-    currentTiKuId:""
-  }
+    userId:"",
+    tiKuKind:"",
+    currentTiKuId:"",
+    currentTiKuTitle:"",
+    time:"",
+    pageSize:0,
+    errors:0,
+  },
+  //url: 'http://localhost:8080/Qsea/'
+  //url: 'http://localhost:8080/'
+  url:'http://killmytime.cn:8080/Qsea/'
 })

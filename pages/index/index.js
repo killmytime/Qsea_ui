@@ -4,7 +4,7 @@ const app = getApp()
 
 Page({
   data: {
-    navData: ["模拟题", "1233"],
+    navData: [],
     navData1:[],
     navData2:[],
     currentTab: 0,
@@ -13,54 +13,95 @@ Page({
   questionTap:function(e){
     var kind=e.target.id
     //ToDO 将id设置到全局变量里面
-    console.log(kind)
-    if(e.target.id=="1@1@1"){
+    //console.log(kind)
+    app.globalData.currentTiKuId=kind;
+    app.globalData.currentTiKuTitle=e.target.dataset.title;
+    app.globalData.tiKuKind="common";
+    //console.log(app.globalData.currentTiKuTitle)
       wx.navigateTo({
         url: '../exercises/exercises',
       })
-    }
+      wx.showLoading({
+        title: '正在加载题目',
+      })
+  },
+  blockTap:function(e){
+    var that=this
+    var index=e.target.id
+    that.setData({
+      currentTab:index
+    })
   },
   onLoad: function () {
-  
   },
   onShow:function(){
-    var that=this;
-    wx.request({
-      url: 'http://localhost:8080/title', //仅为示例，并非真实的接口地址
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: function (res) {
-        var temp0=['模拟题'];
-        var directory01=res.data.directory1;
-        for(var i in directory01){
-          temp0.push(directory01[i].title);
-        }
-        console.log(temp0);
-        that.setData({
-          navData: temp0
-        })
-        var temp1=[];
-        var directory02=res.data.directory2;
-        for(var i in directory02){
-          temp1.push(directory02[i]);
-        }
-        console.log(temp1);
-        that.setData({
-          navData1:temp1
-        })
-        var temp2=[];
-        var directory03=res.data.directory3;
-        for(var i in directory03){
-          temp2.push(directory03[i]);
-        }
-        console.log(temp2);
-        that.setData({
-          navData2:temp2
-        })
-      }
+    wx.showLoading({
+      title: '正在玩命加载中',
     })
-    
+    var that=this;
+    //登录
+    wx.login({
+      success: function (res) {
+        if (res.code) {
+          wx.request({
+            url: app.url+'login',
+            header: {
+              'content-type': 'application/json', // 默认值
+            },
+            data: {
+              'js_code': res.code,
+              'userinfo': app.globalData.userInfo
+            },
+            success: function (response) {
+              app.globalData.userId = response.data.openid;
+              //console.log(app.globalData.userId);
+              wx.request({
+                url: app.url+'target_title', 
+                header: {
+                  'content-type': 'application/json', // 默认值
+                  'userId': app.globalData.userId
+                },
+                success: function (res) {
+                  var temp0 = [{ title: "模拟题", id: "0" }];
+                  var directory01 = res.data.directory1;
+                  for (var i in directory01) {
+                    temp0.push(directory01[i]);
+                  }
+                  //console.log(temp0);
+                  that.setData({
+                    navData: temp0
+                  })
+                  var temp1 = [];
+                  var directory02 = res.data.directory2;
+                  for (var i in directory02) {
+                    temp1.push(directory02[i]);
+                  }
+                  //console.log(temp1);
+                  that.setData({
+                    navData1: temp1
+                  })
+                  var temp2 = [];
+                  var directory03 = res.data.directory3;
+                  for (var i in directory03) {
+                    temp2.push(directory03[i]);
+                  }
+                 // console.log(temp2);
+                  that.setData({
+                    navData2: temp2
+                  })
+                  wx.hideLoading();
+                }
+              })
+
+            },
+          })
+        } else {
+          console.log('获取用户登录态失败！' + res.errMsg)
+        }
+      }
+    });
+   // console.log(app.globalData)
+   
   },
 
   switchNav(event) {

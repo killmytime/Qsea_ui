@@ -1,11 +1,16 @@
 // pages/fini/fini.js
 const app=getApp();
+var util = require('../../utils/util.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    title:"",
+    time:"",
+    pageSize:0,
+    errorNum:0,
   tiKu:{},
   currentTiKu:{}
   },
@@ -14,24 +19,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    //建立连接
-    wx.connectSocket({
-      url: 'ws://localhost:8080/tiKu/010101',
-    })
-    //连接成功
-    wx.onSocketOpen(function(){
-      wx.sendSocketMessage({
-        data: 'stock',
-      })
-    })
-    //接收数据
-    wx.onSocketMessage(function(data){
-        that.setData({
-          tiKu:data
-        })
-         console.log(data)  
-    })
   },
 
   /**
@@ -45,7 +32,18 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    wx.showLoading({
+      title: '正在汇总',
+    })
+  var that=this;
+  var currentTime=util.formatTime(new Date());
+  that.setData({
+    title:app.globalData.currentTiKuTitle,
+    time:currentTime,
+    pageSize: app.globalData.pageSize,
+    errorNum:app.globalData.errors
+  })
+  wx.hideLoading();
   },
 
   /**

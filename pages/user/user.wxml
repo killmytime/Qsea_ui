@@ -21,8 +21,13 @@
                 </navigator>
             </view>
             <view class="widgets__item">
-                <navigator id="my_error" class="widgets__info" url="">
+                <navigator id="my_error" class="widgets__info" bindtap='navToErrors'>
                     <text class="widgets__info-name">我的错题本</text>
+                </navigator>
+            </view>
+             <view class="widgets__item">
+                <navigator id="my_point" class="widgets__info" bindtap='navToPoints'>
+                    <text class="widgets__info-name">我的错点</text>
                 </navigator>
             </view>
             <view class="widgets__item">

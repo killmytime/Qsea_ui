@@ -6,7 +6,6 @@
     "pages/discover/discover",
     "pages/about/about",
     "pages/feedback/feedback",
-    "pages/question/question",
     "pages/event/event",
     "pages/correct/correct",
     "pages/exercises/exercises",
@@ -17,7 +16,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "佬答题",
+    "navigationBarTitleText": "答题Test",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
